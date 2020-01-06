@@ -133,9 +133,8 @@ const LoggerFactory = {
   }
 };
 
+Object.defineProperty(exports, '__esModule', { value: true });
 
-module.exports = {
-  _default: LoggerFactory,
-  Logger,
-  color
-};
+exports.default = LoggerFactory;
+exports.Logger = Logger;
+exports.color = color;
