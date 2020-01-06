@@ -12,6 +12,7 @@ Features:
 - printf-like message formatting
 - configurable and customizable
 
+![demo](demo.gif)
 
 ## Table of Contents
 - [Usage](#usage)
