@@ -12,7 +12,7 @@ Features:
 - printf-like message formatting
 - configurable and customizable
 
-![demo](demo.gif)
+![demo](https://ibb.co/myNPYtr)
 
 ## Table of Contents
 - [Usage](#usage)
