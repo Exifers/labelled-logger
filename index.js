@@ -1,7 +1,7 @@
 const chalk = require('chalk');
 const sprintf = require('sprintf-js').sprintf;
 
-const color = {
+const colors = {
   GREEN: {
     hex: '#8dc891'
   },
@@ -40,6 +40,8 @@ class Logger {
       ...entry,
       equalized: equalize(entry.label, labels)
     }));
+    const firstLevel = this.levelsData[0].value;
+    this.setLevel(firstLevel);
   }
 
   error(message) {
@@ -130,11 +132,10 @@ const LoggerFactory = {
     logger.init();
     logger.enable();
     return logger;
-  }
+  },
+
+  Logger,
+  colors
 };
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
-exports.default = LoggerFactory;
-exports.Logger = Logger;
-exports.color = color;
+module.exports = LoggerFactory;
