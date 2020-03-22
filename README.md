@@ -51,12 +51,19 @@ const levelsData = [
 ];
 
 const logger = LoggerFactory.createLogger(labelsData, levelsData);
+logger.setLevel(1); // everything below or equal level 1 will be printed
+logger.setExpandObjects(true); // objects and lists will be printed entirely
+logger.disable(); // don't log anything
+logger.enable('create', 'compute'); // log only create and compute labels
+logger.enable(); // log all labels
 
 
-// log messages in your code:
+// log messages in your code
+// logger.log(<level>, <label>, <message>, ...<variables>)
+
 logger.log(0, 'prepare', 'reading file');
 /* ... */
 logger.log(1, 'prepare', '%d lines read', lines);
 /* ... */
-logger.log(1, 'parse', 'parsed file, parsed returned %s', ret); 
+logger.log(1, 'parse', 'parsed file, parsed returned %s', ret);
 ```

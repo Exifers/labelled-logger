@@ -31,7 +31,8 @@ class Logger {
     this.levelsData = levelsData;
 
     this.level = options.level || null;
-    this.failSilently = options.failSilently || true;
+    this.failSilently = options.failSilently === undefined ? true : options.failSilently;
+    this.expandObjects = options.expandObjects || false;
   }
 
   init() {
@@ -88,8 +89,12 @@ class Logger {
     this.level = level;
   }
 
-  setFailSilently(value) {
+  setFailSilently(value = true) {
     this.failSilently = value;
+  }
+
+  setExpandObjects(value = true) {
+    this.expandObjects = value;
   }
 
   log(level, label, ...args) {
@@ -115,14 +120,22 @@ class Logger {
  
     let [template, ...tokens] = args;
     tokens = tokens || [];
-    tokens = tokens.map(token => chalk.bold(token));
+    const strings = tokens.map(token => chalk.bold(token));
 
-    const message = sprintf(template, tokens);
+    const message = sprintf(template, strings);
 
     const formattedLabel = chalk.hex(labelEntry.color.hex)
       (labelEntry.equalized + ': ');
 
     console.log(formattedLabel + message);
+
+    if (this.expandObjects) {
+      for (const token of tokens) {
+        if (typeof token === 'object' && token !== null) {
+          console.dir(token);
+        }
+      }
+    }
   }
 }
 

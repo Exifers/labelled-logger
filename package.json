@@ -1,6 +1,6 @@
 {
   "name": "labelled-logger",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A logger featuring customizable labels, colors, log levels and more.",
   "main": "index.js",
   "author": "Emmanuel",
@@ -9,5 +9,6 @@
     "chalk": "^3.0.0",
     "sprintf-js": "^1.1.2"
   },
-  "files": []
+  "files": [],
+  "keywords": ["logger","log","levels","color","labels",""]
 }
